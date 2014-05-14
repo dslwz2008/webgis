@@ -3,21 +3,24 @@
 <head>
     <meta charset="utf-8"/>
     <title>My first Openlayers Map</title>
+    <script type="text/javascript" src="jquery-1.11.1.min.js"></script>
     <script type="text/javascript" src="OpenLayers.js"></script>
     <script type="text/javascript">
-        var map, layer;
-        function init(){
+        $(document).ready(function(){
+            var map, osm_layer;
             map = new OpenLayers.Map('map_element');
-            layer = new OpenLayers.Layer.WMS( "OpenLayers WMS",
-                    "http://vmap0.tiles.osgeo.org/wms/vmap0",
-                    {layers: 'basic'} );
-            map.addLayer(layer);
-            map.zoomToMaxExtent();
-        }
+            osm_layer = new OpenLayers.Layer.OSM("Cycle map");
+            map.addLayer(osm_layer);
+            map.zoomToMaxExtent(
+                    new OpenLayers.LonLat(-71.147, 42.472).transform(
+                    new OpenLayers.Projection("EPSG:4326"),
+                    map.getProjectionObject()), 12
+            );
+        });
     </script>
 </head>
-<body onload="init();">
-    <div id="map_element" style="width:500px;height: 500px">
+<body>
+    <div id="map_element" style="width:1000px;height: 500px">
 
     </div>
 </body>
