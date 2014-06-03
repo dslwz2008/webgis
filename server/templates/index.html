@@ -1,0 +1,100 @@
+<!DOCTYPE HTML>
+<html lang="zh_cn">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GPS Track Visualizer</title>
+    <link rel="stylesheet" href="../static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../static/js/theme/default/style.css">
+
+</head>
+<body>
+<div class="container">
+    <!--标题行-->
+    <div class="row">
+        <div class="col-md-12">
+            <h1>GPS Track Visualizer</h1>
+            <p class="lead">visualize your daily tracks in this site</p>
+        </div>
+    </div>
+    <!--功能行-->
+    <div class="row">
+        <div class="col-md-6">
+            <form role="form" action="../">
+                <div class="form-group">
+                    <label>Input .gpx file:</label>
+                    <input type="file" id="gpxFile" name="gpxfile" data-url="/fileupload">
+
+                    <p class="help-block">Input your GPS track file here.</p>
+                </div>
+            </form>
+            <button type="submit" class="btn btn-info">Submit</button>
+        </div>
+        <div class="col-md-6">
+            <form class="form-inline" role="form">
+                <div class="form-group">
+                    <label class="sr-only">Min Lon:</label>
+                    <input id="minlon" type="number" class="form-control" placeholder="Min lon: eg. 99.5"
+                           step="0.5">
+                </div>
+                <div class="form-group">
+                    <label class="sr-only">Max Lon:</label>
+                    <input id="maxlon" type="number" class="form-control" placeholder="Max lon: eg. 110.5"
+                           step="0.5">
+                </div>
+                <br>
+                <div class="form-group">
+                    <label class="sr-only">Min Lat:</label>
+                    <input id="minlat" type="number" class="form-control" placeholder="Min lat: eg. 38.5"
+                           step="0.5">
+                </div>
+                <div class="form-group">
+                    <label class="sr-only">Max Lat:</label>
+                    <input id="maxlat" type="number" class="form-control" placeholder="Max lat: eg. 40.0"
+                           step="0.5">
+                </div>
+            </form>
+            <button type="submit" class="btn btn-info" style="margin-top: 15px;" onclick="queryMapWithBounds()">Query</button>
+        </div>
+    </div>
+    <!--地图-->
+    <div class="row" style="margin-top: 20px;">
+        <div class="col-md-12">
+            <div id="map" style="width:100%;height: 500px;">
+            </div>
+        </div>
+    </div>
+    <!--比例尺和鼠标坐标-->
+    <div class="row">
+        <div id="scale" class="col-md-6">
+
+        </div>
+        <div id="location" class="col-md-6">
+            Position
+        </div>
+    </div>
+    <!--属性表-->
+    <div class="row">
+        <div class="col-md-12" id="nodelist">
+            <label>Click on the track to get feature info</label>
+        </div>
+    </div>
+</div>
+<!--版权-->
+<footer class="container">
+    <ul class="list-inline">
+        <li>Contact me: <a>dslwz2002@163.com</a></li>
+        <li>Copyright 2014. All rights reserved.</li>
+    </ul>
+</footer>
+<script type="text/javascript" src="../static/js/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="../static/js/jquery.iframe-transport.js"></script>
+<script type="text/javascript" src="../static/js/jquery.ui.widget.js"></script>
+<script type="text/javascript" src="../static/js/jquery.fileupload.js"></script>
+<script type="text/javascript" src="../static/js/OpenLayers.js"></script>
+<script type="text/javascript" src="../static/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../static/js/map.js"></script>
+
+</body>
+
+</html>

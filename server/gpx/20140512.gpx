@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?><gpx version="1.0" creator="GPSLogger - http://gpslogger.mendhak.com/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.topografix.com/GPX/1/0" xsi:schemaLocation="http://www.topografix.com/GPX/1/0 http://www.topografix.com/GPX/1/0/gpx.xsd"><time>2014-05-12T10:35:19Z</time><trk><trkseg><trkpt lat="39.9819292" lon="116.38142355"><ele>125.30000305175781</ele><time>2014-05-12T10:35:19Z</time><course>178.5</course><speed>2.5</speed><src>gps</src><sat>13</sat><hdop>0.8</hdop></trkpt>
+<trkpt lat="39.98186965" lon="116.38146328"><ele>117.19999694824219</ele><time>2014-05-12T10:36:20Z</time><speed>0.0</speed><src>gps</src><sat>11</sat><hdop>1.6</hdop></trkpt>
+<trkpt lat="39.98188707" lon="116.38147672"><ele>115.19999694824219</ele><time>2014-05-12T10:37:20Z</time><speed>0.0</speed><src>gps</src><sat>12</sat><hdop>1.6</hdop></trkpt>
+<trkpt lat="39.98600559" lon="116.38249441"><ele>73.80000305175781</ele><time>2014-05-12T10:38:51Z</time><course>84.6</course><speed>5.75</speed><src>gps</src><sat>11</sat><hdop>5.4</hdop></trkpt>
+<trkpt lat="39.98654991" lon="116.38962323"><ele>31.5</ele><time>2014-05-12T10:39:55Z</time><course>87.7</course><speed>15.0</speed><src>gps</src><sat>15</sat><hdop>2.6</hdop></trkpt>
+<trkpt lat="39.98691628" lon="116.40267987"><ele>37.5</ele><time>2014-05-12T10:41:03Z</time><course>87.9</course><speed>15.008331</speed><src>gps</src><sat>12</sat><hdop>0.8</hdop></trkpt>
+<trkpt lat="39.98701885" lon="116.41155084"><ele>53.0</ele><time>2014-05-12T10:42:27Z</time><course>88.9</course><speed>6.519202</speed><src>gps</src><sat>14</sat><hdop>1.2</hdop></trkpt>
+<trkpt lat="39.98720928" lon="116.41535869"><ele>50.400001525878906</ele><time>2014-05-12T10:43:33Z</time><course>88.8</course><speed>2.5</speed><src>gps</src><sat>11</sat><hdop>2.6</hdop></trkpt>
+<trkpt lat="39.9871693" lon="116.41597998"><ele>-29.200000762939453</ele><time>2014-05-12T10:44:37Z</time><course>87.9</course><speed>2.5</speed><src>gps</src><sat>8</sat><hdop>4.4</hdop></trkpt>
+<trkpt lat="39.98718703" lon="116.41726806"><ele>34.29999923706055</ele><time>2014-05-12T10:45:47Z</time><speed>0.5</speed><src>gps</src><sat>8</sat><hdop>2.4</hdop></trkpt>
+<trkpt lat="39.98730695" lon="116.41737177"><ele>80.0999984741211</ele><time>2014-05-12T10:46:55Z</time><speed>0.0</speed><src>gps</src><sat>8</sat><hdop>4.4</hdop></trkpt>
+<trkpt lat="39.98744248" lon="116.41756497"><ele>132.8000030517578</ele><time>2014-05-12T10:48:09Z</time><speed>0.0</speed><src>gps</src><sat>7</sat><hdop>5.4</hdop></trkpt>
+<trkpt lat="39.9902474" lon="116.41784815"><ele>87.30000305175781</ele><time>2014-05-12T10:49:17Z</time><course>339.6</course><speed>1.5</speed><src>gps</src><sat>7</sat><hdop>7.2</hdop></trkpt>
+<trkpt lat="39.9913478" lon="116.41796491"><ele>32.29999923706055</ele><time>2014-05-12T10:50:23Z</time><course>6.3</course><speed>6.5</speed><src>gps</src><sat>7</sat><hdop>3.4</hdop></trkpt>
+<trkpt lat="39.99227958" lon="116.41802657"><ele>62.900001525878906</ele><time>2014-05-12T10:51:36Z</time><speed>0.0</speed><src>gps</src><sat>15</sat><hdop>5.2</hdop></trkpt>
+</trkseg></trk></gpx>
