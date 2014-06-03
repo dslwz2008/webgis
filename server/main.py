@@ -32,7 +32,7 @@ class FileUploadHandler(tornado.web.RequestHandler):
                 fp.write(gpxfile['body'])
 
             #convert GPX file to shapefile
-            subprocess.call(['gpx2shp', filename], shell=True)
+            subprocess.call('gpx2shp %s' % (filename,), shell=True)
 
             result['status'] = 'ok'
             self.set_header('Content-Type', 'application/json')
