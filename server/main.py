@@ -34,6 +34,10 @@ class FileUploadHandler(tornado.web.RequestHandler):
             #convert GPX file to shapefile
             subprocess.call('gpx2shp %s' % (filename,), shell=True)
 
+            #new datastore in webgis workspace
+
+            #publish with styles
+
             result['status'] = 'ok'
             self.set_header('Content-Type', 'application/json')
             self.write(json.dumps(result))
