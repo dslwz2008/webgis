@@ -60,11 +60,12 @@ def new_ds_shape(name, desc, filename, ns):
 
 def new_ds_shape1(filename):
     myUrl = 'http://192.168.36.5:8080/geoserver/rest/workspaces/webgis/datastores/testds/file.shp'
-    fp = open(filename, 'r')
+    fp = open(filename, 'rb')
     payload = fp.read()
-    headers = {'Content-type': 'text/plain'}
+    headers = {'Content-type': 'application/zip'}
     resp = requests.put(myUrl, auth=('admin', 'geoserver'),
                         data=payload, headers=headers)
+    fp.close()
     print(resp.status_code)
 
 
@@ -90,9 +91,9 @@ if __name__ == '__main__':
     # query_ws()
     # create_ws()
     # get_ds()
-    new_ds_shape('testds', 'this is a test datastore',
-                 '/root/webgis/server/gpx/1703714_trk.shp',
-                 'http://192.168.36.5:8080/webgis')
+    #new_ds_shape('testds', 'this is a test datastore',
+    #             '/root/webgis/server/gpx/1703714_trk.shp',
+    #             'http://192.168.36.5:8080/webgis')
     # get_fts()
     # get_ft()
-    # new_ds_shape1('/root/webgis/server/gpx/1703714_trk.shp')
+    new_ds_shape1('/root/webgis/server/gpx/1703714_trk.zip')
