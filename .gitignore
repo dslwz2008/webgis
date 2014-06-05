@@ -1,4 +1,6 @@
-**/.idea/
-**/.DS_Store/
+#generic files to ignore
+*.DS_Store
+.idea/
 server/gpx/
 data/rawdata/
+*.py[cod]
