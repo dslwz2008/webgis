@@ -51,7 +51,7 @@ class FileUploadHandler(tornado.web.RequestHandler):
             basename = filename[4:-4] + postfix
             prjname = basename + '.prj'
             #add prj file
-            with open(prjname) as fp:
+            with open(prjname, 'w') as fp:
                 fp.write(prj_str)
 
             zipname = basename + '.zip'
@@ -63,22 +63,32 @@ class FileUploadHandler(tornado.web.RequestHandler):
             os.chdir('..')
 
             #publish shapefile with new datastore in webgis workspace
-            if self.new_ds_shape('gpx/' + zipname) != 201:
+            if self.new_ds_shape(basename, 'gpx/' + zipname) != 201:
                 result['status'] = 'error'
+                result['reason'] = 'create datastore failed'
                 self.set_header('Content-Type', 'application/json')
                 self.write(json.dumps(result))
             #get featuretype of new layer, get bounding box
-            bbox = self.get_bounding_box(self.get_ft())
+            ft_str = self.get_ft(basename, basename)
+            if ft_str is None:
+                result['status'] = 'error'
+                result['reason'] = 'get feature type failed'
+                self.set_header('Content-Type', 'application/json')
+                self.write(json.dumps(result))
+
+            bbox = self.get_bounding_box(ft_str)
             #return bounding box
             result['status'] = 'ok'
             result['left'] = bbox[0]
-            result['bottom'] = bbox[1]
-            result['right'] = bbox[2]
+            result['right'] = bbox[1]
+            result['bottom'] = bbox[2]
             result['top'] = bbox[3]
+            result['layername'] = basename
             self.set_header('Content-Type', 'application/json')
             self.write(json.dumps(result))
         else:
             result['status'] = 'error'
+            result['reason'] = 'no file uploaded'
             self.set_header('Content-Type', 'application/json')
             self.write(json.dumps(result))
 
@@ -98,7 +108,7 @@ class FileUploadHandler(tornado.web.RequestHandler):
                 % (dsname, lyrname)
         headers = {'Accept': 'text/xml'}
         resp = requests.get(myUrl, auth=('admin','geoserver'),headers=headers)
-        if resp.status_code != 201:
+        if resp.status_code == 200:
             print(resp.status_code)
             return resp.text
         return None
@@ -112,6 +122,7 @@ class FileUploadHandler(tornado.web.RequestHandler):
         for child in root.find('latLonBoundingBox')[:4]:
             bbox.append(float(child.text))
         print(bbox)
+        return bbox
 
 
 class IndexHandler(tornado.web.RequestHandler):
