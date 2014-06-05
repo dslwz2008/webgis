@@ -1,3 +1,5 @@
+///create by
+
 var map;
 var untiled;
 var tiled;
@@ -10,6 +12,15 @@ $('document').ready(function init(){
     //initialise file upload plugin
     uploadGPX();
 
+    /** 格式化输入字符串**/
+    //用法: "hello{0}".format('world')；返回'hello world'
+    String.prototype.format= function(){
+        var args = arguments;
+        return this.replace(/\{(\d+)\}/g,function(s,i){
+        return args[i];
+        });
+    };
+
     format = 'image/png';
     var bounds = new OpenLayers.Bounds(
         -180, -90,
@@ -18,6 +29,7 @@ $('document').ready(function init(){
     var options = {
         controls: [],
         maxExtent: bounds,
+        minExtent: new OpenLayers.Bounds(-1, -1, 1, 1),
         maxResolution: 1.40625,
         projection: "EPSG:4326",
         units: 'degrees'
@@ -172,7 +184,36 @@ function uploadGPX(){
         },
         //上传完成后的回调
         done: function (e, data) {
-            alert(data.result['status']);
+            var stat = data.result['status'];
+            if(stat == 'ok'){
+                var bounds = new OpenLayers.Bounds(data.result['left'] - 0.5,
+                    data.result['bottom'] - 0.5, data.result['right'] + 0.5, data.result['top'] + 0.5);
+                //alert(bounds);
+                var lyrname = data.result['layername'];
+                var layers = 'webgis:{0}'.format(lyrname);
+                var alias = "webgis:{0} - Tiled".format(lyrname);
+                var customlyr = new OpenLayers.Layer.WMS(
+                    alias, "http://192.168.36.5:8080/geoserver/webgis/wms",
+                    {
+                        LAYERS: layers,
+                        STYLES: '',
+                        format: format,
+                        tiled: true,
+                        transparent: true,
+                        tilesOrigin : bounds.left + ',' + bounds.bottom
+                    },
+                    {
+                        buffer: 0,
+                        displayOutsideMaxExtent: false,
+                        isBaseLayer: false,
+                        yx : {'EPSG:4326' : true}
+                    }
+                );
+                map.addLayer(customlyr);
+                map.zoomToExtent(bounds);
+            }else{
+                alert(data.result['reason']);
+            }
         }
     });
 }
